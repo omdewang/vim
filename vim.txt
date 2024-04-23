@@ -1,0 +1,93 @@
+
+set mouse=a
+syntax on
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set relativenumber
+set nocompatible
+filetype on
+filetype plugin on
+filetype indent on
+
+
+call plug#begin()
+
+Plug 'junegunn/fzf.vim'
+Plug 'preservim/nerdtree'
+Plug 'rust-lang/rust.vim'
+Plug 'morhetz/gruvbox'
+Plug 'catppuccin/vim', { 'as': 'catppuccin' }
+Plug 'vim-airline/vim-airline'
+Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'Yggdroot/indentLine'
+Plug 'lervag/vimtex'
+Plug 'mileszs/ack.vim'
+Plug 'lervag/vimtex', { 'tag': 'v2.15' }
+Plug 'bfrg/vim-cpp-modern'
+Plug 'jiangmiao/auto-pairs'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'ervandew/supertab'
+Plug 'nvim-treesitter/nvim-treesitter'   
+Plug 'spywhere/detect-language.nvim'
+Plug 'artur-shaik/vim-javacomplete2'
+Plug 'othree/html5.vim'
+Plug 'alvan/vim-closetag'
+Plug 'pangloss/vim-javascript'
+
+
+
+call plug#end()
+syntax enable
+
+colorscheme gruvbox
+set background=dark
+
+map <leader>a :Ack!<space>
+map <C-n> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
+let g:vimtex_view_method = 'zathura'
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'default'  
+let g:airline#extensions#tabline#formatter = 'jsformatter' 
+let g:airline#extensions#tabline#formatter = 'unique_tail' 
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:indentLine_setColors = 0
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+" powerline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = '☰'
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.dirty='⚡'
+
+let g:ycm_language_server =
+  \ [{
+  \   'name': 'ccls',
+  \   'cmdline': [ 'ccls' ],
+  \   'filetypes': [ 'c', 'cpp', 'cc', 'h', 'hpp' ],
+  \   'project_root_files': [ '.ccls-root', 'compile_commands.json' ]
+  \ }]
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+
